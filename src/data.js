@@ -1,6 +1,7 @@
 import cardCreatives from './assets/card-creatives.png';
 import cardWebsite from './assets/card-website.png';
 import cardVideo from './assets/card-video.png';
+import websiteMockup03 from './assets/website/website-mockup-03.png';
 import impactCardiac from './assets/impact/cardiac-health.png';
 import impactDentique from './assets/impact/dentique.png';
 import impactUnipon from './assets/impact/unipon-hospital.png';
@@ -111,7 +112,7 @@ export const services = [
     description:
       'Bold social creatives, ad visuals, and campaign assets built for healthcare, lifestyle, and brand storytelling across every platform.',
     highlights: ['Social creatives', 'Ad campaigns', 'Print & outdoor', 'Brand storytelling'],
-    link: '/works#graphics',
+    link: '/works',
   },
   {
     id: 'web-design',
@@ -151,7 +152,7 @@ export const services = [
     description:
       'Logos, visual systems, and brand guidelines that give your business a cohesive, premium presence across every touchpoint.',
     highlights: ['Logo design', 'Brand identity', 'Guidelines', 'Visual systems'],
-    link: '/works#graphics',
+    link: '/works',
   },
 ];
 
@@ -335,6 +336,11 @@ export const worksByCategory = {
       image: cardWebsite,
       title: 'Narayan Memorial Hospital',
       blurb: 'A modern, patient-first website experience.',
+    },
+    {
+      image: websiteMockup03,
+      title: 'Multi-Brand Web Experiences',
+      blurb: 'Travel and healthcare website systems — Adamas Holidays, emergency care, and clinic networks.',
     },
     {
       image: 'https://picsum.photos/id/180/600/750',

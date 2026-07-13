@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import AboutHero from '../components/AboutHero';
+import ClientsMarquee from '../components/ClientsMarquee';
 
 const values = [
   {
@@ -22,7 +23,7 @@ export default function About() {
       <AboutHero />
 
       {/* Values */}
-      <section className="mx-auto w-full max-w-6xl px-6 pb-24 pt-8">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16 pt-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {values.map((v) => (
             <div
@@ -43,6 +44,8 @@ export default function About() {
           </Link>
         </div>
       </section>
+
+      <ClientsMarquee />
     </>
   );
 }

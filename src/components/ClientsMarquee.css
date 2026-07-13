@@ -1,0 +1,108 @@
+.clients-marquee {
+  position: relative;
+  padding: 4.5rem 0 5rem;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(239, 68, 68, 0.1) 0%, transparent 55%),
+    #070707;
+}
+
+.clients-marquee__header {
+  max-width: 72rem;
+  margin: 0 auto 2.25rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.clients-marquee__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #ef4444;
+}
+
+.clients-marquee__title {
+  margin: 0.7rem 0 0;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #f4f1ec;
+}
+
+.clients-marquee__desc {
+  margin: 0.75rem auto 0;
+  max-width: 28rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(244, 241, 236, 0.62);
+}
+
+.clients-marquee__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.clients-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  align-items: center;
+  animation: clients-marquee-ltr 38s linear infinite;
+  will-change: transform;
+}
+
+.clients-marquee__viewport:hover .clients-marquee__track {
+  animation-play-state: paused;
+}
+
+.clients-marquee__card {
+  flex-shrink: 0;
+  width: 210px;
+  height: 130px;
+  display: grid;
+  place-items: center;
+  padding: 0.4rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.clients-marquee__card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes clients-marquee-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-marquee {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .clients-marquee__card {
+    width: 170px;
+    height: 108px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients-marquee__track {
+    animation: none;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+  }
+}

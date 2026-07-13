@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import hero01 from '../../assets/works-hero/hero-01-creative.mp4';
-import hero02 from '../../assets/works-hero/hero-02-cinematic.mp4';
 import hero03 from '../../assets/works-hero/hero-03-sales.mp4';
 import hero04 from '../../assets/works-hero/hero-04-3d.mp4';
 import hero05 from '../../assets/works-hero/hero-05-premium.mp4';
 import './WorkHero.css';
 
-const HERO_VIDEOS = [hero01, hero02, hero03, hero04, hero05];
+const HERO_VIDEOS = [hero01, hero03, hero04, hero05];
 
 export default function WorkHero() {
   const rootRef = useRef(null);
