@@ -1,13 +1,6 @@
 import { Link } from 'react-router-dom';
 import AboutHero from '../components/AboutHero';
 
-const stats = [
-  { value: '50+', label: 'Brands launched' },
-  { value: '120+', label: 'Projects delivered' },
-  { value: '8', label: 'Years of craft' },
-  { value: '99%', label: 'Client retention' },
-];
-
 const values = [
   {
     title: 'Creativity First',
@@ -28,25 +21,8 @@ export default function About() {
     <>
       <AboutHero />
 
-      {/* Stats */}
-      <section className="mx-auto w-full max-w-6xl px-6 pb-20">
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center transition-colors hover:border-red-500/40"
-            >
-              <div className="text-4xl font-bold text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]">
-                {s.value}
-              </div>
-              <div className="mt-2 text-sm text-neutral-400">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Values */}
-      <section className="mx-auto w-full max-w-6xl px-6 pb-24">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-24 pt-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {values.map((v) => (
             <div

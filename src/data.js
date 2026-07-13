@@ -111,7 +111,7 @@ export const services = [
     description:
       'Bold social creatives, ad visuals, and campaign assets built for healthcare, lifestyle, and brand storytelling across every platform.',
     highlights: ['Social creatives', 'Ad campaigns', 'Print & outdoor', 'Brand storytelling'],
-    link: '/works/creative',
+    link: '/works#graphics',
   },
   {
     id: 'web-design',
@@ -121,7 +121,7 @@ export const services = [
     description:
       'High-impact websites with cinematic visuals, clear UX, and performance-first builds that turn visitors into believers.',
     highlights: ['Landing pages', 'Portfolio sites', 'UI/UX design', 'Responsive builds'],
-    link: '/works/website',
+    link: '/works#website',
   },
   {
     id: 'video',
@@ -131,7 +131,7 @@ export const services = [
     description:
       'Reels, edits, and motion pieces crafted to capture attention fast and keep your brand in motion across digital channels.',
     highlights: ['Reels & shorts', 'Promo edits', 'Motion graphics', 'Social video'],
-    link: '/works/motion',
+    link: '/works#motion',
   },
   {
     id: 'digital-marketing',
@@ -141,7 +141,7 @@ export const services = [
     description:
       'SEO, paid media, and social strategy designed to reach the right audience, drive engagement, and deliver measurable results.',
     highlights: ['SEO & SEM', 'Paid campaigns', 'Social strategy', 'Analytics'],
-    link: '/works/digital-marketing',
+    link: '/works#digital-marketing',
   },
   {
     id: 'branding',
@@ -151,7 +151,7 @@ export const services = [
     description:
       'Logos, visual systems, and brand guidelines that give your business a cohesive, premium presence across every touchpoint.',
     highlights: ['Logo design', 'Brand identity', 'Guidelines', 'Visual systems'],
-    link: '/works/creative',
+    link: '/works#graphics',
   },
 ];
 

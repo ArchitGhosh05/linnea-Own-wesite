@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Mascot from './components/Mascot';
 import Home from './pages/Home';
 import About from './pages/About';
-import Works, { WorksGrid } from './pages/Works';
+import Works from './pages/Works';
 import Team from './pages/Team';
 import Career from './pages/Career';
 import Services from './pages/Services';
@@ -35,10 +35,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/works" element={<Works />}>
-            <Route index element={<Navigate to="creative" replace />} />
-            <Route path=":category" element={<WorksGrid />} />
-          </Route>
+          <Route path="/works" element={<Works />} />
+          <Route path="/works/:category" element={<Navigate to="/works" replace />} />
           <Route path="/team" element={<Team />} />
           <Route path="/career" element={<Career />} />
           <Route path="/blog" element={<Blog />} />

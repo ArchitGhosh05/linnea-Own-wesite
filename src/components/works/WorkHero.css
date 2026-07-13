@@ -1,0 +1,176 @@
+.work-hero {
+  --work-ink: #f4f1ec;
+  --work-mute: rgba(244, 241, 236, 0.72);
+  --work-red: #ef4444;
+  --work-void: #050505;
+
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--work-void);
+  color: var(--work-ink);
+}
+
+.work-hero__media {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.work-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(1.05) contrast(1.05);
+  animation: work-hero-fade-in 0.7s ease forwards;
+}
+
+.work-hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.28) 0%, rgba(5, 5, 5, 0.12) 40%, rgba(5, 5, 5, 0.78) 100%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.45) 0%, rgba(5, 5, 5, 0.12) 50%, rgba(5, 5, 5, 0.28) 100%);
+  pointer-events: none;
+}
+
+.work-hero__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 5, 0.5) 100%);
+  pointer-events: none;
+}
+
+.work-hero__progress {
+  position: absolute;
+  top: 6.5rem;
+  right: 1.5rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.work-hero__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.work-hero__dot.is-active {
+  background: var(--work-red);
+  transform: scale(1.25);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.7);
+}
+
+.work-hero__content {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 7.5rem 1.5rem 3.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.work-hero__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--work-red);
+}
+
+.work-hero__title {
+  margin: 0;
+  font-family: 'Manrope', 'Jost', system-ui, sans-serif;
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+}
+
+.work-hero__title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.work-hero__title-word {
+  display: inline-block;
+  transform: translateY(115%);
+}
+
+.work-hero__title-word--accent {
+  color: #fff;
+  text-shadow: 0 0 40px rgba(239, 68, 68, 0.35);
+}
+
+.work-hero__sub {
+  margin: 1.5rem 0 0;
+  max-width: 28rem;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--work-mute);
+  opacity: 0;
+}
+
+.work-hero__scroll {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 236, 0.55);
+}
+
+.work-hero__scroll-line {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--work-red), transparent);
+  animation: work-hero-scroll 1.8s ease-in-out infinite;
+}
+
+@keyframes work-hero-scroll {
+  0%,
+  100% {
+    transform: scaleX(0.4);
+    opacity: 0.4;
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes work-hero-fade-in {
+  from {
+    opacity: 0.35;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .work-hero__content {
+    padding: 6.5rem 1.25rem 2.5rem;
+  }
+
+  .work-hero__progress {
+    top: 5.75rem;
+    right: 1.15rem;
+  }
+}
