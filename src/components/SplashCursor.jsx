@@ -2,17 +2,17 @@
 import { useEffect, useRef } from 'react';
 
 function SplashCursor({
-  SIM_RESOLUTION = 128,
-  DYE_RESOLUTION = 1440,
-  CAPTURE_RESOLUTION = 512,
+  SIM_RESOLUTION = 96,
+  DYE_RESOLUTION = 512,
+  CAPTURE_RESOLUTION = 256,
   DENSITY_DISSIPATION = 3.5,
   VELOCITY_DISSIPATION = 2,
   PRESSURE = 0.1,
-  PRESSURE_ITERATIONS = 20,
+  PRESSURE_ITERATIONS = 12,
   CURL = 3,
   SPLAT_RADIUS = 0.2,
-  SPLAT_FORCE = 6000,
-  SHADING = true,
+  SPLAT_FORCE = 4000,
+  SHADING = false,
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
@@ -677,9 +677,40 @@ function SplashCursor({
     initFramebuffers();
     let lastUpdateTime = Date.now();
     let colorUpdateTimer = 0.0;
+    let lastActivityTime = Date.now();
+    let isLoopRunning = false;
+    const IDLE_MS = 2200;
+
+    function markActivity() {
+      lastActivityTime = Date.now();
+      if (!isLoopRunning && isActive && !document.hidden) startLoop();
+    }
+
+    function startLoop() {
+      if (isLoopRunning || !isActive) return;
+      isLoopRunning = true;
+      lastUpdateTime = Date.now();
+      animationFrameId.current = requestAnimationFrame(updateFrame);
+    }
+
+    function stopLoop() {
+      isLoopRunning = false;
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+        animationFrameId.current = null;
+      }
+    }
 
     function updateFrame() {
-      if (!isActive) return;
+      if (!isActive || document.hidden) {
+        stopLoop();
+        return;
+      }
+      const idle = Date.now() - lastActivityTime > IDLE_MS;
+      if (idle) {
+        stopLoop();
+        return;
+      }
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
@@ -687,6 +718,11 @@ function SplashCursor({
       step(dt);
       render(null);
       animationFrameId.current = requestAnimationFrame(updateFrame);
+    }
+
+    function handleVisibility() {
+      if (document.hidden) stopLoop();
+      else markActivity();
     }
 
     function calcDeltaTime() {
@@ -1029,31 +1065,45 @@ function SplashCursor({
       }
     }
 
-    // Add event listeners
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove, false);
-    window.addEventListener('touchend', handleTouchEnd);
+    const onMouseDown = (e) => {
+      markActivity();
+      handleMouseDown(e);
+    };
+    const onMouseMove = (e) => {
+      markActivity();
+      handleMouseMove(e);
+    };
+    const onTouchStart = (e) => {
+      markActivity();
+      handleTouchStart(e);
+    };
+    const onTouchMove = (e) => {
+      markActivity();
+      handleTouchMove(e);
+    };
 
-    updateFrame();
+    // Add event listeners
+    window.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    markActivity();
 
     // Cleanup function
     return () => {
       isActive = false;
-
-      // Cancel animation frame
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current);
-        animationFrameId.current = null;
-      }
+      stopLoop();
 
       // Remove event listeners
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

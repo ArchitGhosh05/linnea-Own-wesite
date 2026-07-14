@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const BG_IMAGE_1 =
@@ -8,74 +8,19 @@ const BG_IMAGE_2 =
 
 const SPOTLIGHT_R = 260;
 
-function RevealLayer({ image, cursorX, cursorY }) {
-  const canvasRef = useRef(null);
-  const [maskUrl, setMaskUrl] = useState('');
-
-  useEffect(() => {
-    const resize = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
-  }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const { width, height } = canvas;
-    ctx.clearRect(0, 0, width, height);
-
-    const gradient = ctx.createRadialGradient(
-      cursorX,
-      cursorY,
-      0,
-      cursorX,
-      cursorY,
-      SPOTLIGHT_R,
-    );
-    gradient.addColorStop(0, 'rgba(255,255,255,1)');
-    gradient.addColorStop(0.4, 'rgba(255,255,255,1)');
-    gradient.addColorStop(0.6, 'rgba(255,255,255,0.75)');
-    gradient.addColorStop(0.75, 'rgba(255,255,255,0.4)');
-    gradient.addColorStop(0.88, 'rgba(255,255,255,0.12)');
-    gradient.addColorStop(1, 'rgba(255,255,255,0)');
-
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.arc(cursorX, cursorY, SPOTLIGHT_R, 0, Math.PI * 2);
-    ctx.fill();
-
-    setMaskUrl(canvas.toDataURL());
-  }, [cursorX, cursorY]);
-
+function RevealLayer({ image, layerRef }) {
   return (
-    <>
-      <canvas
-        ref={canvasRef}
-        className="pointer-events-none absolute inset-0"
-        style={{ display: 'none' }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-30 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${image})`,
-          WebkitMaskImage: maskUrl ? `url(${maskUrl})` : 'none',
-          maskImage: maskUrl ? `url(${maskUrl})` : 'none',
-          WebkitMaskSize: '100% 100%',
-          maskSize: '100% 100%',
-        }}
-      />
-    </>
+    <div
+      ref={layerRef}
+      className="pointer-events-none absolute inset-0 z-30 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${image})`,
+        WebkitMaskImage: `radial-gradient(circle ${SPOTLIGHT_R}px at var(--sx, -999px) var(--sy, -999px), #000 0%, #000 40%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.12) 88%, transparent 100%)`,
+        maskImage: `radial-gradient(circle ${SPOTLIGHT_R}px at var(--sx, -999px) var(--sy, -999px), #000 0%, #000 40%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.12) 88%, transparent 100%)`,
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+      }}
+    />
   );
 }
 
@@ -83,7 +28,7 @@ export default function HomeHero() {
   const mouse = useRef({ x: -999, y: -999 });
   const smooth = useRef({ x: -999, y: -999 });
   const rafRef = useRef(null);
-  const [cursorPos, setCursorPos] = useState({ x: -999, y: -999 });
+  const layerRef = useRef(null);
 
   useEffect(() => {
     const onMouseMove = (e) => {
@@ -94,11 +39,15 @@ export default function HomeHero() {
     const tick = () => {
       smooth.current.x += (mouse.current.x - smooth.current.x) * 0.1;
       smooth.current.y += (mouse.current.y - smooth.current.y) * 0.1;
-      setCursorPos({ x: smooth.current.x, y: smooth.current.y });
+      const el = layerRef.current;
+      if (el) {
+        el.style.setProperty('--sx', `${smooth.current.x}px`);
+        el.style.setProperty('--sy', `${smooth.current.y}px`);
+      }
       rafRef.current = requestAnimationFrame(tick);
     };
 
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
     rafRef.current = requestAnimationFrame(tick);
 
     return () => {
@@ -121,11 +70,7 @@ export default function HomeHero() {
           style={{ backgroundImage: `url(${BG_IMAGE_1})` }}
         />
 
-        <RevealLayer
-          image={BG_IMAGE_2}
-          cursorX={cursorPos.x}
-          cursorY={cursorPos.y}
-        />
+        <RevealLayer image={BG_IMAGE_2} layerRef={layerRef} />
 
         <div className="pointer-events-none absolute left-0 right-0 top-[14%] z-50 flex flex-col items-start px-8 text-left sm:px-12 md:px-16 lg:px-20">
           <h1 className="leading-[0.95] text-white">

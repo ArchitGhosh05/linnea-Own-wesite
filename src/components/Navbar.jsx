@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { navItems } from '../data';
+import { navItems } from '../nav';
 import logo from '../assets/linnea-logo.png';
 
 export default function Navbar() {

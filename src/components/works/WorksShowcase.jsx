@@ -81,7 +81,7 @@ export default function WorksShowcase({ category, items }) {
               muted
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
             />
             <div className="works-hero__video-shade" />
           </div>

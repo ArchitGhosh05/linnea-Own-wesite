@@ -10,6 +10,7 @@ export default function ServicesHero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
         src={servicesHeroVideo}
+        preload="metadata"
       />
     </section>
   );

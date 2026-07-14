@@ -2,19 +2,24 @@ import { Link } from 'react-router-dom';
 import HomeHero from '../components/HomeHero';
 import CardSwap, { Card } from '../components/CardSwap';
 import ImageTrail from '../components/ImageTrail';
-import { features } from '../data';
 import collageCreatives from '../assets/collage-creatives.png';
 import cardCreatives from '../assets/card-creatives.png';
 import cardWebsite from '../assets/card-website.png';
 import cardVideo from '../assets/card-video.png';
+import dm01 from '../assets/digital-marketing/mockup-01.png';
+import dm03 from '../assets/digital-marketing/mockup-03.png';
 import impactCardiac from '../assets/impact/cardiac-health.png';
 import impactDentique from '../assets/impact/dentique.png';
 import impactUnipon from '../assets/impact/unipon-hospital.png';
 import impactMaxillofacial from '../assets/impact/maxillofacial-awareness.png';
 
-const homeCards = features.map((f) =>
-  f.title === 'Creatives' ? { ...f, image: collageCreatives } : f,
-);
+const homeCards = [
+  { image: collageCreatives, title: 'Creatives' },
+  { image: cardWebsite, title: 'Web Design' },
+  { image: cardVideo, title: 'Video' },
+  { image: dm01, title: 'Digital Marketing' },
+  { image: dm03, title: 'Branding' },
+];
 
 const trailImages = [
   cardCreatives,
@@ -24,11 +29,6 @@ const trailImages = [
   impactDentique,
   impactUnipon,
   impactMaxillofacial,
-  'https://picsum.photos/id/287/300/300',
-  'https://picsum.photos/id/1001/300/300',
-  'https://picsum.photos/id/1025/300/300',
-  'https://picsum.photos/id/1026/300/300',
-  'https://picsum.photos/id/1027/300/300',
 ];
 
 function CardBody({ image, title }) {
@@ -39,6 +39,8 @@ function CardBody({ image, title }) {
         alt={title}
         className="h-full w-full object-cover"
         draggable="false"
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
         <h3 className="text-lg font-semibold text-white">{title}</h3>
@@ -52,7 +54,6 @@ export default function Home() {
     <>
       <HomeHero />
 
-      {/* SERVICES with CardSwap */}
       <section
         className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-12 px-6 py-24 md:flex-row md:items-center md:justify-between"
         style={{ minHeight: '750px' }}

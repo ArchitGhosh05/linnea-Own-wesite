@@ -12,6 +12,7 @@ export default function AboutHero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
         src={aboutHeroVideo}
+        preload="metadata"
       />
       <div className="absolute inset-0 bg-black/10" aria-hidden="true" />
 

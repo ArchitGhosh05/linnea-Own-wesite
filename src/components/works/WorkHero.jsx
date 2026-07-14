@@ -74,7 +74,7 @@ export default function WorkHero() {
           className="work-hero__video"
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
         />
       </div>
 
