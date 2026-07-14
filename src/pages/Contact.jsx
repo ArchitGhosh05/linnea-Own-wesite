@@ -30,7 +30,7 @@ export default function Contact() {
           <div className="flex flex-col gap-6">
             {[
               { label: 'Email', value: 'contact@linneamedia.in' },
-              { label: 'Phone', value: '+91 98365 78363' },
+              { label: 'Phone', value: '+9196 7430 7430' },
               { label: 'Studio', value: 'Chatterjee International Center, Park Street, Kolkata 700071' },
             ].map((info) => (
               <div
