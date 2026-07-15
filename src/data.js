@@ -40,6 +40,9 @@ import triparmaPhotoTwo from './assets/team/triparma-2.png';
 import snehaPhotoOne from './assets/team/sneha-1.png';
 import snehaPhotoTwo from './assets/team/sneha-2.png';
 
+export const studioAddress =
+  'Linnea Media, 5th Floor, Room No: A10, Chatterjee International Center, Jawaharlal Nehru Rd, Kankaria Estates, Park Street area, Kolkata, West Bengal 700071';
+
 export const openings = [
   {
     role: 'Senior Brand Designer',

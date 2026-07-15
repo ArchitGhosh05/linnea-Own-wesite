@@ -21,7 +21,7 @@ export default function WorkHero() {
         { y: '0%', rotate: 0, duration: 1.05, stagger: 0.12, ease: 'power4.out', delay: 0.2 },
       );
       gsap.fromTo(
-        '.work-hero__sub',
+        '.work-hero__scroll',
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', delay: 0.7 },
       );
@@ -91,18 +91,12 @@ export default function WorkHero() {
       </div>
 
       <div className="work-hero__content">
-        <p className="work-hero__eyebrow">Linnea Media · Portfolio</p>
-        <h1 className="work-hero__title" aria-label="Our Work">
+        <h1 className="work-hero__title" aria-label="Our Flex">
           <span className="work-hero__title-line">
             <span className="work-hero__title-word">OUR</span>
-          </span>
-          <span className="work-hero__title-line">
-            <span className="work-hero__title-word work-hero__title-word--accent">WORK</span>
+            <span className="work-hero__title-word work-hero__title-word--accent">FLEX</span>
           </span>
         </h1>
-        <p className="work-hero__sub">
-          Graphics, motion, websites, and campaigns — one continuous stream of craft.
-        </p>
         <div className="work-hero__scroll">
           <span>Scroll</span>
           <div className="work-hero__scroll-line" />

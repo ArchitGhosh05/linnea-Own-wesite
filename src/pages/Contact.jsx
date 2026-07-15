@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ContactHero from '../components/ContactHero';
+import { studioAddress } from '../data';
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -31,7 +32,7 @@ export default function Contact() {
             {[
               { label: 'Email', value: 'contact@linneamedia.in' },
               { label: 'Phone', value: '+9196 7430 7430' },
-              { label: 'Studio', value: 'Chatterjee International Center, Park Street, Kolkata 700071' },
+              { label: 'Studio', value: studioAddress },
             ].map((info) => (
               <div
                 key={info.label}
@@ -40,7 +41,9 @@ export default function Contact() {
                 <div className="text-xs font-semibold uppercase tracking-wider text-red-500">
                   {info.label}
                 </div>
-                <div className="mt-2 break-words text-base text-white sm:text-lg">{info.value}</div>
+                <div className={`mt-2 break-words text-white ${info.label === 'Studio' ? 'text-sm leading-relaxed sm:text-base' : 'text-base sm:text-lg'}`}>
+                  {info.value}
+                </div>
               </div>
             ))}
           </div>

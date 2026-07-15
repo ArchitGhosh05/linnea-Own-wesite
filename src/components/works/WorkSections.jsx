@@ -33,7 +33,6 @@ const MOTION_VIDEOS = [
 const SECTIONS = [
   {
     id: 'motion',
-    index: '01',
     title: 'Motion',
     description: 'Reels, edits, and motion graphics that keep brands in motion.',
     tone: 'motion',
@@ -43,7 +42,6 @@ const SECTIONS = [
   },
   {
     id: 'website',
-    index: '02',
     title: 'Website & System Design',
     description: 'Crisp product surfaces, web experiences, and scalable design systems.',
     tone: 'website',
@@ -58,7 +56,6 @@ const SECTIONS = [
   },
   {
     id: 'digital-marketing',
-    index: '03',
     title: 'Digital Marketing',
     description: 'Campaign assets, growth creatives, and channel-ready storytelling.',
     tone: 'marketing',
@@ -212,7 +209,6 @@ export default function WorkSections() {
           >
             <header className="work-section__header">
               <div className="work-section__reveal">
-                <span className="work-section__index">{section.index}</span>
                 <h2 className="work-section__title">{section.title}</h2>
               </div>
               <p className="work-section__desc work-section__reveal">{section.description}</p>

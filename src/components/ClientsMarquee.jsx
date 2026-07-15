@@ -50,7 +50,9 @@ export default function ClientsMarquee() {
               className="clients-marquee__card"
               aria-hidden={index >= CLIENTS.length}
             >
-              <img src={client.logo} alt={index < CLIENTS.length ? client.name : ''} />
+              <div className="clients-marquee__logo">
+                <img src={client.logo} alt={index < CLIENTS.length ? client.name : ''} />
+              </div>
             </div>
           ))}
         </div>

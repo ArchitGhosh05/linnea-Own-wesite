@@ -10,11 +10,12 @@ export default function TeamHero() {
 
       <div className="team-hero__inner">
         <div className="team-hero__copy">
-          <span className="team-hero__eyebrow">Our Team</span>
-          <h1 className="team-hero__title">The people behind the magic</h1>
+          <h1 className="team-hero__title team-hero__title--retro-y2k">
+            A note from the mastermind
+          </h1>
           <p className="team-hero__desc">
-            Designers, developers, marketers, and storytellers building bold work for brands
-            across India.
+          " Great brands are built with bold ideas and lasting partnerships.
+          Welcome to our new digital home—where innovation meets impact "
           </p>
         </div>
 

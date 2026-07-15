@@ -100,15 +100,16 @@ export default function HomeHero() {
           style={{ animationDelay: '0.85s' }}
         >
           <p className="text-xs leading-relaxed text-white/80 sm:hidden">
-            At <em className="font-semibold not-italic text-white">Linnea Media</em>, we build
-            impactful brands through creativity, strategy, and innovation.
+            <span className="mb-2 block font-semibold text-white">Why Us?</span>
+            We skip the fluff, focus on what actually works, and deliver creative work that hits
+            right in the metrics. Your call.
           </p>
           <p className="hidden text-xs leading-relaxed text-white/80 sm:block sm:text-sm">
-            At{' '}
-            <em className="font-semibold not-italic text-white">Linnea Media</em>, we transform
-            ideas into brands, brands into experiences, and experiences into lasting business
-            growth. We combine strategy, creativity, technology, and storytelling to build
-            meaningful connections between businesses and the people they serve.
+            <span className="mb-2 block font-semibold text-white">Why Us?</span>
+            Look, you could hire an agency that promises &ldquo;synergistic paradigm shifts&rdquo; and
+            hands you a 40-page report of zero action items. Or, you could work with us. We skip
+            the fluff, focus on what actually works, and deliver creative work that hits right in
+            the metrics. Your call.
           </p>
           <Link
             to="/works"

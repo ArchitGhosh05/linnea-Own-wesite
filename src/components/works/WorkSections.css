@@ -21,15 +21,6 @@
   max-width: 42rem;
 }
 
-.work-section__index {
-  display: block;
-  margin-bottom: 0.55rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  color: var(--red);
-}
-
 .work-section__title {
   margin: 0;
   font-size: clamp(2.1rem, 5vw, 3.6rem);

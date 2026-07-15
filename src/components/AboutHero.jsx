@@ -20,16 +20,13 @@ export default function AboutHero() {
         <div className="flex flex-1 items-start justify-center pt-16 sm:pt-20 md:pt-24">
           <div className="max-w-3xl px-5 text-center sm:px-6">
             <h1 className="text-3xl leading-[1.05] tracking-[-0.02em] text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              Bridge the
+              Rescuing brilliant
               <br />
-              gaps. <span className="text-white/60">Ditch the</span>
+              brands from{' '}
+              <span className="text-white/60">boring</span>
               <br />
-              <span className="text-white/60">grindwork.</span>
+              <span className="text-white/60">advertising.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-white/80 sm:mt-8 sm:text-base md:text-lg">
-              Flowpath unifies your complete wellness tools, so your crew spends less energy
-              plugging gaps and more on real progress.
-            </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8 sm:gap-4">
               <Link
                 to="/contact"

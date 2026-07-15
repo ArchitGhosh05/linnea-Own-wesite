@@ -1,9 +1,8 @@
 import contactHeroPhoto from '../assets/hero.png';
+import { studioAddress } from '../data';
 import './ContactHero.css';
 
-const STUDIO_ADDRESS =
-  'Linnea Media, 5th Floor, Room No: A10, Chatterjee International Center, Jawaharlal Nehru Rd, Kankaria Estates, Park Street area, Kolkata, West Bengal 700071';
-const MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(STUDIO_ADDRESS)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+const MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(studioAddress)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
 
 export default function ContactHero() {
   return (
@@ -18,7 +17,7 @@ export default function ContactHero() {
         />
         <div className="contact-hero__map-label">
           <span className="contact-hero__map-eyebrow">Studio</span>
-          <p className="contact-hero__map-text">{STUDIO_ADDRESS}</p>
+          <p className="contact-hero__map-text">{studioAddress}</p>
         </div>
       </div>
 
