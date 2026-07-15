@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { navItems } from '../nav';
 import logo from '../assets/linnea-logo.png';
@@ -6,16 +6,21 @@ import logo from '../assets/linnea-logo.png';
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10">
-        {/* Left: logo */}
-        <Link to="/" className="flex items-center" aria-label="Linnea Media home">
-          <img src={logo} alt="Linnea Media" className="h-7 w-auto md:h-8" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-5 sm:py-4 md:px-10">
+        <Link to="/" className="flex min-w-0 items-center" aria-label="Linnea Media home">
+          <img src={logo} alt="Linnea Media" className="h-6 w-auto max-w-[140px] object-contain sm:h-7 sm:max-w-none md:h-8" />
         </Link>
 
-        {/* Right: nav links */}
-        <nav className="hidden items-center gap-0.5 rounded-full border border-white/10 bg-white/5 px-1.5 py-1.5 backdrop-blur-md lg:gap-1 lg:px-2 md:flex">
+        <nav className="hidden items-center gap-0.5 rounded-full border border-white/10 bg-white/5 px-1.5 py-1.5 backdrop-blur-md lg:flex lg:gap-1 lg:px-2">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -41,11 +46,11 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile: hamburger */}
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md md:hidden"
+          aria-expanded={open}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md lg:hidden"
         >
           <span className="relative flex h-4 w-5 flex-col justify-between">
             <span className={`h-0.5 w-full bg-white transition-transform duration-300 ${open ? 'translate-y-[7px] rotate-45' : ''}`} />
@@ -55,10 +60,9 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       <div
-        className={`mx-5 overflow-hidden rounded-2xl border border-white/10 bg-black/80 backdrop-blur-xl transition-all duration-300 md:hidden ${
-          open ? 'max-h-[32rem] opacity-100' : 'max-h-0 border-transparent opacity-0'
+        className={`mx-3 overflow-y-auto rounded-2xl border border-white/10 bg-black/90 backdrop-blur-xl transition-all duration-300 sm:mx-5 lg:hidden ${
+          open ? 'max-h-[min(70vh,32rem)] opacity-100' : 'max-h-0 border-transparent opacity-0'
         }`}
       >
         <nav className="flex flex-col p-3">

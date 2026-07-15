@@ -77,6 +77,7 @@
   .contact-hero {
     flex-direction: column;
     min-height: auto;
+    margin-top: 4.25rem;
   }
 
   .contact-hero__map,
@@ -87,19 +88,26 @@
 
   .contact-hero__map {
     height: 58vw;
-    min-height: 260px;
-    max-height: 380px;
+    min-height: 240px;
+    max-height: 340px;
   }
 
   .contact-hero__photo {
     height: 42vw;
-    min-height: 200px;
-    max-height: 280px;
+    min-height: 180px;
+    max-height: 240px;
   }
 
   .contact-hero__map iframe,
   .contact-hero__photo img {
     min-height: 100%;
     height: 100%;
+  }
+
+  .contact-hero__map-label {
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.85rem;
+    max-width: none;
   }
 }

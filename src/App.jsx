@@ -32,7 +32,7 @@ function PageFallback() {
 
 export default function App() {
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white">
+    <div className="relative min-h-screen w-full overflow-x-clip bg-[#0a0a0a] text-white">
       <Suspense fallback={null}>
         <SplashCursor
           RAINBOW_MODE={true}

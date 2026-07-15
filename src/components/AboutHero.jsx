@@ -4,7 +4,7 @@ import './AboutHero.css';
 
 export default function AboutHero() {
   return (
-    <section className="about-hero relative flex h-screen w-full flex-col overflow-hidden">
+    <section className="about-hero relative flex min-h-[100dvh] w-full flex-col overflow-hidden">
       <video
         autoPlay
         muted

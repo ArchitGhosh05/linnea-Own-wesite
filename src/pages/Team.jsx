@@ -6,8 +6,8 @@ export default function Team() {
     <>
       <TeamHero />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 md:py-24">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {team.map((member) => (
             <div
               key={member.name}
@@ -18,17 +18,20 @@ export default function Team() {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:opacity-0"
+                    className="h-full w-full object-cover transition-all duration-700 ease-out [@media(hover:hover)]:group-hover:scale-[1.03] [@media(hover:hover)]:group-hover:opacity-0"
                     draggable="false"
                   />
                   <img
                     src={member.hoverImage}
-                    alt={`${member.name} alternate`}
-                    className="absolute inset-0 h-full w-full scale-[1.08] object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
+                    alt=""
+                    className="pointer-events-none absolute inset-0 hidden h-full w-full scale-[1.08] object-cover opacity-0 transition-all duration-700 ease-out [@media(hover:hover)]:block [@media(hover:hover)]:group-hover:scale-100 [@media(hover:hover)]:group-hover:opacity-100"
                     draggable="false"
+                    aria-hidden="true"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
-                  <div className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full bg-red-500/25 blur-3xl transition-all duration-700 group-hover:bg-red-500/35" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-4 pb-4 pt-16 text-left">
+                    <h3 className="text-base font-semibold text-white sm:text-lg">{member.name}</h3>
+                    <p className="mt-0.5 text-xs text-red-300 sm:text-sm">{member.role}</p>
+                  </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center p-8">

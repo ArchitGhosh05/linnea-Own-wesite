@@ -3,26 +3,26 @@ import { openings } from '../data';
 
 export default function Career() {
   return (
-    <div className="pt-32">
-      <section className="mx-auto w-full max-w-5xl px-6 pb-16 text-center">
+    <div className="pt-24 sm:pt-32">
+      <section className="mx-auto w-full max-w-5xl px-4 pb-12 text-center sm:px-6 sm:pb-16">
         <span className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
           Career
         </span>
-        <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+        <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
           Join the Linnea crew
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-300">
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-300 sm:mt-6 sm:text-lg">
           We&apos;re always looking for creative, curious people who love building bold
           brands. Explore our open roles below and grow with us.
         </p>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl px-6 pb-24">
-        <div className="flex flex-col gap-5">
+      <section className="mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6 sm:pb-24">
+        <div className="flex flex-col gap-4 sm:gap-5">
           {openings.map((job) => (
             <div
               key={job.role}
-              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_40px_-12px_rgba(239,68,68,0.6)] md:flex-row md:items-center md:justify-between"
+              className="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-red-500/50 hover:shadow-[0_0_40px_-12px_rgba(239,68,68,0.6)] sm:p-7 md:flex-row md:items-center md:justify-between"
             >
               <div>
                 <div className="flex flex-wrap items-center gap-3">
@@ -49,8 +49,8 @@ export default function Career() {
           ))}
         </div>
 
-        <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.02] p-10 text-center">
-          <h2 className="text-2xl font-semibold text-white">
+        <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center sm:mt-16 sm:p-10">
+          <h2 className="text-xl font-semibold text-white sm:text-2xl">
             Don&apos;t see the right role?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-neutral-400">

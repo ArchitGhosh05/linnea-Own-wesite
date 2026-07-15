@@ -57,14 +57,8 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <div
-      className="home-hero min-h-screen bg-white tracking-[-0.02em]"
-      style={{ fontFamily: "'Inter', sans-serif" }}
-    >
-      <section
-        className="relative h-screen w-full overflow-hidden bg-black"
-        style={{ height: '100dvh' }}
-      >
+    <div className="home-hero min-h-[100dvh] bg-white tracking-[-0.02em]" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <section className="relative w-full overflow-hidden bg-black" style={{ height: '100dvh' }}>
         <div
           className="hero-zoom absolute inset-0 z-10 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${BG_IMAGE_1})` }}
@@ -72,16 +66,16 @@ export default function HomeHero() {
 
         <RevealLayer image={BG_IMAGE_2} layerRef={layerRef} />
 
-        <div className="pointer-events-none absolute left-0 right-0 top-[14%] z-50 flex flex-col items-start px-8 text-left sm:px-12 md:px-16 lg:px-20">
+        <div className="pointer-events-none absolute left-0 right-0 top-[12%] z-50 flex flex-col items-start px-5 text-left sm:top-[14%] sm:px-12 md:px-16 lg:px-20">
           <h1 className="leading-[0.95] text-white">
             <span
-              className="hero-anim hero-reveal font-playfair block text-2xl font-normal italic sm:text-4xl md:text-5xl lg:text-6xl"
+              className="hero-anim hero-reveal font-playfair block text-[1.65rem] font-normal italic xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ letterSpacing: '-0.05em', animationDelay: '0.25s' }}
             >
               Ideas That Connect,
             </span>
             <span
-              className="hero-anim hero-reveal -mt-1 block text-2xl font-normal sm:text-4xl md:text-5xl lg:text-6xl"
+              className="hero-anim hero-reveal -mt-1 block text-[1.65rem] font-normal xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ letterSpacing: '-0.08em', animationDelay: '0.42s' }}
             >
               Strategies That Grow
@@ -90,7 +84,7 @@ export default function HomeHero() {
         </div>
 
         <div
-          className="hero-anim hero-fade absolute bottom-14 left-10 z-50 hidden max-w-[280px] sm:block md:left-14 md:max-w-[320px]"
+          className="hero-anim hero-fade absolute bottom-14 left-10 z-50 hidden max-w-[280px] md:block md:left-14 md:max-w-[320px]"
           style={{ animationDelay: '0.7s' }}
         >
           <p className="text-sm leading-relaxed text-white/80">
@@ -102,10 +96,14 @@ export default function HomeHero() {
         </div>
 
         <div
-          className="hero-anim hero-fade absolute bottom-10 left-5 right-5 z-50 flex max-w-full flex-col items-start gap-4 sm:bottom-24 sm:left-auto sm:right-10 sm:max-w-[300px] md:right-14 md:max-w-[360px] sm:gap-5"
+          className="hero-anim hero-fade absolute bottom-8 left-5 right-5 z-50 flex max-w-full flex-col items-start gap-3 pb-[env(safe-area-inset-bottom)] sm:bottom-24 sm:left-auto sm:right-10 sm:max-w-[300px] sm:gap-5 md:right-14 md:max-w-[360px]"
           style={{ animationDelay: '0.85s' }}
         >
-          <p className="text-xs leading-relaxed text-white/80 sm:text-sm">
+          <p className="text-xs leading-relaxed text-white/80 sm:hidden">
+            At <em className="font-semibold not-italic text-white">Linnea Media</em>, we build
+            impactful brands through creativity, strategy, and innovation.
+          </p>
+          <p className="hidden text-xs leading-relaxed text-white/80 sm:block sm:text-sm">
             At{' '}
             <em className="font-semibold not-italic text-white">Linnea Media</em>, we transform
             ideas into brands, brands into experiences, and experiences into lasting business
@@ -114,7 +112,7 @@ export default function HomeHero() {
           </p>
           <Link
             to="/works"
-            className="rounded-full bg-[#e8702a] px-7 py-3 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:bg-[#d2611f] hover:shadow-lg hover:shadow-[#e8702a]/30 active:scale-95"
+            className="pointer-events-auto rounded-full bg-[#e8702a] px-6 py-2.5 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:bg-[#d2611f] hover:shadow-lg hover:shadow-[#e8702a]/30 active:scale-95 sm:px-7 sm:py-3"
           >
             Start Digging
           </Link>

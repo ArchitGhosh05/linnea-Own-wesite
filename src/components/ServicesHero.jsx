@@ -2,7 +2,7 @@ import servicesHeroVideo from '../assets/videos/services-hero.mp4';
 
 export default function ServicesHero() {
   return (
-    <section className="relative h-screen min-h-[100dvh] w-full overflow-hidden">
+    <section className="relative min-h-[70dvh] w-full overflow-hidden md:min-h-[100dvh]">
       <video
         autoPlay
         loop

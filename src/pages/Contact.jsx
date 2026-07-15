@@ -13,12 +13,12 @@ export default function Contact() {
     <>
       <ContactHero />
 
-      <section className="mx-auto w-full max-w-5xl px-6 py-16 md:py-24">
-        <div className="mb-12 text-center">
+      <section className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16 md:py-24">
+        <div className="mb-8 text-center sm:mb-12">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
             Contact Us
           </span>
-          <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             Let&apos;s build something great
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-neutral-400">
@@ -35,37 +35,37 @@ export default function Contact() {
             ].map((info) => (
               <div
                 key={info.label}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6"
               >
                 <div className="text-xs font-semibold uppercase tracking-wider text-red-500">
                   {info.label}
                 </div>
-                <div className="mt-2 text-lg text-white">{info.value}</div>
+                <div className="mt-2 break-words text-base text-white sm:text-lg">{info.value}</div>
               </div>
             ))}
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-8"
+            className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-8"
           >
             <input
               type="text"
               required
               placeholder="Your name"
-              className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-red-500/60"
+              className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-base text-white placeholder-neutral-500 outline-none transition-colors focus:border-red-500/60 sm:text-sm"
             />
             <input
               type="email"
               required
               placeholder="Your email"
-              className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-red-500/60"
+              className="rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-base text-white placeholder-neutral-500 outline-none transition-colors focus:border-red-500/60 sm:text-sm"
             />
             <textarea
               required
               rows={5}
               placeholder="Tell us about your project"
-              className="resize-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-red-500/60"
+              className="resize-none rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-base text-white placeholder-neutral-500 outline-none transition-colors focus:border-red-500/60 sm:text-sm"
             />
             <button
               type="submit"

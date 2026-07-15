@@ -23,13 +23,13 @@ const posts = [
 
 export default function Blog() {
   return (
-    <div className="pt-32">
-      <section className="mx-auto w-full max-w-4xl px-6 pb-24">
-        <div className="mb-16 text-center">
+    <div className="pt-24 sm:pt-32">
+      <section className="mx-auto w-full max-w-4xl px-4 pb-16 sm:px-6 sm:pb-24">
+        <div className="mb-10 text-center sm:mb-16">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
             Blog
           </span>
-          <h1 className="mt-4 text-4xl font-bold text-white sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             Insights &amp; ideas
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-neutral-400">
@@ -41,7 +41,7 @@ export default function Blog() {
           {posts.map((post) => (
             <article
               key={post.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 transition-colors hover:border-red-500/40"
+              className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-red-500/40 sm:p-8"
             >
               <time className="text-xs font-medium uppercase tracking-wider text-red-400">
                 {post.date}
