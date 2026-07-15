@@ -1,14 +1,23 @@
+# BigRock / Apache
+# Do not rewrite missing real files except true SPA routes.
+# Exclude common static asset extensions from the SPA fallback.
+
 <IfModule mod_headers.c>
-  <FilesMatch "\.(ico|png|svg)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+  <FilesMatch "\.(ico|png|svg|js|css|glb|mp4|webp)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
   <Files "index.html">
-    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
   </Files>
 </IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Never SPA-fallback these — if missing, return real 404 instead of HTML
+  RewriteRule \.(ico|png|svg|js|css|map|woff2?|ttf|glb|mp4|webp|json)$ - [L]
+
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
