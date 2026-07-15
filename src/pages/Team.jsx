@@ -28,10 +28,6 @@ export default function Team() {
                     draggable="false"
                     aria-hidden="true"
                   />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent px-4 pb-4 pt-16 text-left">
-                    <h3 className="text-base font-semibold text-white sm:text-lg">{member.name}</h3>
-                    <p className="mt-0.5 text-xs text-red-300 sm:text-sm">{member.role}</p>
-                  </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center p-8">
