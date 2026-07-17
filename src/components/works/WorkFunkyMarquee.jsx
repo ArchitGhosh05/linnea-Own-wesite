@@ -56,7 +56,6 @@ function MarqueeRow({ items, direction = 'left', speed = 55, onSelect }) {
             aria-label={`View ${item.title}`}
           >
             <img src={item.image} alt="" loading="lazy" draggable={false} />
-            <span className="work-marquee__card-caption">{item.title}</span>
           </button>
         ))}
       </div>

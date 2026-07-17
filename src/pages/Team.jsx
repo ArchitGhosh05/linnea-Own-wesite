@@ -16,6 +16,7 @@ const TEAM_DEPARTMENTS = [
       byName('Parvej Khan'),
     ],
   },
+  { id: 'hr-admin', title: 'HR & Admin', members: team.slice(14, 15) },
   {
     id: 'web-performance',
     title: 'Website Development & Performance Marketing Team',
@@ -28,7 +29,6 @@ const TEAM_DEPARTMENTS = [
     ],
   },
   { id: 'client-relationship', title: 'Client Relationship Team', members: team.slice(11, 14) },
-  { id: 'hr-admin', title: 'HR & Admin', members: team.slice(14, 15) },
 ];
 
 function TeamMemberCard({ member }) {
