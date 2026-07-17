@@ -5,16 +5,17 @@ const byName = (name) => team.find((member) => member.name === name);
 
 const TEAM_DEPARTMENTS = [
   {
-    id: 'graphics',
-    title: 'Graphics Team',
+    id: 'creative-motion',
+    title: 'Creative & Motion',
     members: [
       byName('Avishek Gupta'),
       byName('Sree Ghosh'),
       byName('Hrishikesh Sarkar'),
       byName('Sagar Das'),
+      byName('Krishnendu Bala'),
+      byName('Parvej Khan'),
     ],
   },
-  { id: 'motion', title: 'Motion Team', members: team.slice(4, 6) },
   {
     id: 'web-performance',
     title: 'Website Development & Performance Marketing Team',
@@ -71,18 +72,26 @@ export default function Team() {
         <div className="flex flex-col gap-14 sm:gap-16 md:gap-20">
           {TEAM_DEPARTMENTS.map((department) => (
             <div key={department.id}>
-              <div className="mb-6 sm:mb-8">
+              <div className={`mb-6 sm:mb-8 ${department.members.length === 1 ? 'text-center' : ''}`}>
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
                   Department
                 </span>
                 <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">{department.title}</h2>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-                {department.members.map((member) => (
-                  <TeamMemberCard key={member.name} member={member} />
-                ))}
-              </div>
+              {department.members.length === 1 ? (
+                <div className="flex justify-center">
+                  <div className="w-full max-w-sm">
+                    <TeamMemberCard member={department.members[0]} />
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+                  {department.members.map((member) => (
+                    <TeamMemberCard key={member.name} member={member} />
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

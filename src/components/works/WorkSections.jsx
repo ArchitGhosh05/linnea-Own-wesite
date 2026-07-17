@@ -128,9 +128,38 @@ function WorkCard({ item, variant = 'default', onOpen }) {
   );
 }
 
+const INITIAL_VISIBLE = 6;
+
 export default function WorkSections() {
   const rootRef = useRef(null);
   const [active, setActive] = useState(null);
+  const [expanded, setExpanded] = useState({});
+
+  const didMountRef = useRef(false);
+
+  const toggleExpanded = (id) => {
+    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    const root = rootRef.current;
+    if (!root) return;
+    const hiddenCards = gsap.utils
+      .toArray('.work-card', root)
+      .filter((el) => Number(gsap.getProperty(el, 'opacity')) < 1);
+    if (hiddenCards.length) {
+      gsap.fromTo(
+        hiddenCards,
+        { y: 48, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.06, ease: 'power3.out' },
+      );
+    }
+    ScrollTrigger.refresh();
+  }, [expanded]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -199,7 +228,9 @@ export default function WorkSections() {
   return (
     <div ref={rootRef} className="work-sections">
       {SECTIONS.map((section) => {
-        const items = section.items().slice(0, 8);
+        const allItems = section.items();
+        const isExpanded = expanded[section.id];
+        const items = isExpanded ? allItems : allItems.slice(0, INITIAL_VISIBLE);
 
         return (
           <section
@@ -265,16 +296,30 @@ export default function WorkSections() {
             )}
 
             {items.length > 0 && (
-              <div className={`work-section__grid work-section__grid--${section.tone}`}>
-                {items.map((item, i) => (
-                  <WorkCard
-                    key={`${section.id}-${item.title}-${i}`}
-                    item={item}
-                    onOpen={setActive}
-                    variant="default"
-                  />
-                ))}
-              </div>
+              <>
+                <div className={`work-section__grid work-section__grid--${section.tone}`}>
+                  {items.map((item, i) => (
+                    <WorkCard
+                      key={`${section.id}-${item.title}-${i}`}
+                      item={item}
+                      onOpen={setActive}
+                      variant="default"
+                    />
+                  ))}
+                </div>
+
+                {allItems.length > INITIAL_VISIBLE && (
+                  <div className="work-section__more">
+                    <button
+                      type="button"
+                      className="work-section__more-btn"
+                      onClick={() => toggleExpanded(section.id)}
+                    >
+                      {isExpanded ? 'View less' : 'View more'}
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </section>
         );

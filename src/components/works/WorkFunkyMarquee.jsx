@@ -116,7 +116,7 @@ export default function WorkFunkyMarquee() {
     <section className="work-marquee" aria-label="Work gallery">
       <div className="work-marquee__header">
         <span className="work-marquee__eyebrow">Selected frames</span>
-        <h2 className="work-marquee__title">A continuous reel of craft</h2>
+        <h2 className="work-marquee__title">Graphics</h2>
       </div>
 
       <div className="work-marquee__stage">

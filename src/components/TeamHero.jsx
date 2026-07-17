@@ -14,8 +14,8 @@ export default function TeamHero() {
             A note from the mastermind
           </h1>
           <p className="team-hero__desc">
-          " Great brands are built with bold ideas and lasting partnerships.
-          Welcome to our new digital home—where innovation meets impact "
+            &ldquo;Great brands are built with bold ideas and lasting partnerships.
+            Welcome to our new digital home—where innovation meets impact.&rdquo;
           </p>
         </div>
 

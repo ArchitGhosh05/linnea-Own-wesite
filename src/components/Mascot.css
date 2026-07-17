@@ -21,12 +21,21 @@
   pointer-events: none;
 }
 
+.mascot-widget--dragging {
+  transition: none;
+}
+
+.mascot-widget--dragging .mascot-stage {
+  cursor: grabbing;
+}
+
 .mascot-stage {
   position: relative;
   width: 168px;
   height: 190px;
   pointer-events: auto;
-  cursor: pointer;
+  cursor: grab;
+  touch-action: none;
   transform: translateY(160px);
   opacity: 0;
   transition: filter 0.2s ease;
@@ -219,7 +228,7 @@
   pointer-events: auto;
   position: absolute;
   top: -6px;
-  left: -6px;
+  right: -6px;
   width: 20px;
   height: 20px;
   border-radius: 50%;

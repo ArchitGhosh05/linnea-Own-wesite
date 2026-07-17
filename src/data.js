@@ -43,33 +43,6 @@ import snehaPhotoTwo from './assets/team/sneha-2.png';
 export const studioAddress =
   'Linnea Media, 5th Floor, Room No: A10, Chatterjee International Center, Jawaharlal Nehru Rd, Kankaria Estates, Park Street area, Kolkata, West Bengal 700071';
 
-export const openings = [
-  {
-    role: 'Senior Brand Designer',
-    type: 'Full-time',
-    location: 'Kharagpur / Remote',
-    desc: 'Lead visual identity projects from concept to delivery for top clients.',
-  },
-  {
-    role: 'Frontend Developer',
-    type: 'Full-time',
-    location: 'Remote',
-    desc: 'Build fast, beautiful, accessible web experiences with React.',
-  },
-  {
-    role: 'Video Editor',
-    type: 'Full-time',
-    location: 'Kharagpur',
-    desc: 'Craft scroll-stopping short-form video content for social platforms.',
-  },
-  {
-    role: 'Social Media Intern',
-    type: 'Internship',
-    location: 'Remote',
-    desc: 'Help plan, create, and schedule content across brand channels.',
-  },
-];
-
 export const services = [
   {
     id: 'creatives',
@@ -126,25 +99,43 @@ export const services = [
 export const worksByCategory = {
   'digital-marketing': [
     {
-      image: dm01,
+      image: dm08,
       title: 'Anti-Tobacco Awareness',
       blurb: 'Linnea Health — social campaign for World Anti-Tobacco Day.',
       tag: 'Healthcare',
     },
     {
-      image: dm02,
+      image: dm07,
       title: 'Brand Growth Campaign',
       blurb: 'Linnea Media — make your brand impossible to ignore.',
       tag: 'Branding',
     },
     {
-      image: dm03,
-      title: 'Kitchen Solutions',
-      blurb: 'Rajlaxmi — appliance marketing with lifestyle visuals.',
-      tag: 'Retail',
+      image: dm01,
+      title: 'Fitness Campaign',
+      blurb: 'Fitness campaign for a fitness brand',
+      tag: 'fitness',
     },
     {
       image: dm04,
+      title: 'Medical Education',
+      blurb: 'NIMS Hospital heart care + oncology awareness content.',
+      tag: 'Healthcare',
+    },
+    {
+      image: dm03,
+      title: 'Dental & Hospital Ads',
+      blurb: 'The Dentique Invisalign + Unipon emergency campaigns.',
+      tag: 'Healthcare',
+    },
+    {
+      image: dm02,
+      title: 'Travel & Cardiac Health',
+      blurb: 'Adamas Holidays + cardiac wellness social creatives.',
+      tag: 'Lifestyle',
+    },
+    {
+      image: dm06,
       title: 'Elevate Every Flame',
       blurb: 'Induction cooktop campaign across social channels.',
       tag: 'Product',
@@ -154,24 +145,6 @@ export const worksByCategory = {
       title: 'Kitchen & Wellness',
       blurb: 'Range hood creative + blood donor awareness post.',
       tag: 'Healthcare',
-    },
-    {
-      image: dm06,
-      title: 'Medical Education',
-      blurb: 'NIMS Hospital heart care + oncology awareness content.',
-      tag: 'Healthcare',
-    },
-    {
-      image: dm07,
-      title: 'Dental & Hospital Ads',
-      blurb: 'The Dentique Invisalign + Unipon emergency campaigns.',
-      tag: 'Healthcare',
-    },
-    {
-      image: dm08,
-      title: 'Travel & Cardiac Health',
-      blurb: 'Adamas Holidays + cardiac wellness social creatives.',
-      tag: 'Lifestyle',
     },
   ],
 };

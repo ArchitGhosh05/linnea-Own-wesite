@@ -296,8 +296,56 @@ export default function Mascot() {
     apiRef.current = Linnea;
     window.Linnea = Linnea;
 
+    const drag = {
+      active: false,
+      moved: false,
+      offX: 0,
+      offY: 0,
+      startX: 0,
+      startY: 0,
+      pointerId: null,
+    };
+
+    const onPointerDown = (e) => {
+      if (e.target.closest('.mascot-close')) return;
+      const rect = wrap.getBoundingClientRect();
+      drag.active = true;
+      drag.moved = false;
+      drag.offX = e.clientX - rect.left;
+      drag.offY = e.clientY - rect.top;
+      drag.startX = e.clientX;
+      drag.startY = e.clientY;
+      drag.pointerId = e.pointerId;
+      stage.setPointerCapture?.(e.pointerId);
+    };
+
+    const onPointerMove = (e) => {
+      if (!drag.active) return;
+      if (!drag.moved) {
+        if (Math.hypot(e.clientX - drag.startX, e.clientY - drag.startY) < 5) return;
+        drag.moved = true;
+        wrap.classList.add('mascot-widget--dragging');
+      }
+      const w = wrap.offsetWidth;
+      const h = wrap.offsetHeight;
+      const left = Math.min(Math.max(0, e.clientX - drag.offX), window.innerWidth - w);
+      const top = Math.min(Math.max(0, e.clientY - drag.offY), window.innerHeight - h);
+      wrap.style.left = `${left}px`;
+      wrap.style.top = `${top}px`;
+      wrap.style.right = 'auto';
+      wrap.style.bottom = 'auto';
+    };
+
+    const onPointerUp = (e) => {
+      if (!drag.active) return;
+      stage.releasePointerCapture?.(e.pointerId);
+      drag.active = false;
+      wrap.classList.remove('mascot-widget--dragging');
+    };
+
     const onStageClick = (e) => {
       if (e.target.closest('.mascot-close') || e.target.closest('.mascot-badge')) return;
+      if (drag.moved) return;
       attention(false);
       // quick click reaction: hop then think then greet
       if (!prefersReducedMotion()) {
@@ -316,6 +364,9 @@ export default function Mascot() {
     };
 
     stage.addEventListener('click', onStageClick);
+    stage.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
     wrap.querySelector('.mascot-close')?.addEventListener('click', onClose);
 
     requestAnimationFrame(() => stage.classList.add('mascot-stage--in'));
@@ -327,6 +378,9 @@ export default function Mascot() {
       clearTimeout(greetTimer);
       killMotion();
       stage.removeEventListener('click', onStageClick);
+      stage.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
       if (window.Linnea === Linnea) delete window.Linnea;
     };
   }, []);

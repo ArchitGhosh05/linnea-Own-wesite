@@ -39,7 +39,6 @@ Open [http://localhost:5173](http://localhost:5173).
 | `/works` | Works (redirects to `/works/creative`) |
 | `/works/:category` | Category showcase |
 | `/team` | Team |
-| `/career` | Career |
 | `/contact` | Contact |
 
 ### Work categories
@@ -64,7 +63,7 @@ Each category page (`WorksShowcase`) includes:
 src/
 ├── App.jsx                 # Routes, navbar, footer, mascot
 ├── data.js                 # Nav, work categories, portfolio items
-├── pages/                  # Home, About, Works, Team, Career, Contact
+├── pages/                  # Home, About, Works, Team, Contact
 ├── components/
 │   ├── works/              # WorksShowcase, Impact, Gallery, Stack, Grid
 │   ├── Navbar.jsx

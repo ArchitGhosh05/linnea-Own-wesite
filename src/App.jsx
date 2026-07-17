@@ -9,7 +9,6 @@ const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Works = lazy(() => import('./pages/Works'));
 const Team = lazy(() => import('./pages/Team'));
-const Career = lazy(() => import('./pages/Career'));
 const Services = lazy(() => import('./pages/Services'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -57,9 +56,11 @@ export default function App() {
             <Route path="/works" element={<Works />} />
             <Route path="/works/:category" element={<Navigate to="/works" replace />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/career" element={<Career />} />
+            <Route path="/career" element={<Navigate to="/" replace />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/hr/*" element={<Navigate to="/" replace />} />
+            <Route path="/admin/*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
       </main>
